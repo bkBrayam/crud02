@@ -56,4 +56,19 @@ public class TaskService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
         }
     }
+
+    public ResponseEntity<Object> deleteTask(Integer id) {
+        Optional<Task> taskFound = taskRepository.findById(id);
+
+        if(taskFound.isPresent()){
+            taskRepository.deleteById(id);
+            Map<String, String> succesResponse = new HashMap<>();
+            succesResponse.put("mensaje", "La tarea se ha eliminado con éxito");
+            return ResponseEntity.ok(succesResponse);
+        } else {
+            Map<String, String> succesResponse = new HashMap<>();
+            succesResponse.put("mensaje", "No se ha encontrado tarea");
+            return ResponseEntity.ok(succesResponse);
+        }
+    }
 }

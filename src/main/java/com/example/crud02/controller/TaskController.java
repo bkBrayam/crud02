@@ -31,4 +31,9 @@ public class TaskController {
     public ResponseEntity<Object> putTask(@RequestBody UpdateTaskRequest request){
         return taskService.updateTask(request);
     }
+
+    @DeleteMapping(path = "task/{taskId}")
+    public ResponseEntity<Object> deleteTask(@PathVariable("taskId") Integer id){
+        return taskService.deleteTask(id);
+    }
 }
