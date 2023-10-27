@@ -1,25 +1,21 @@
-package com.example.crud02.entity;
+package com.example.crud02.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Date;
 
 @Data
 @Builder
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
-public class Task {
+public class UpdateTaskRequest {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(unique = true)
     private String task;
     private String description;
     private String status;
